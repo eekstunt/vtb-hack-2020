@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
-
+import khttp.*
 
 class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity() {
 
     */
 
+    private fun takeResponseByBase64(bmpString:String){
+
+    }
 
 
 
