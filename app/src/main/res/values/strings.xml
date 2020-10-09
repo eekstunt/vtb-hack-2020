@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VTB_HACK_APP</string>
+    <string name="action_settings">Настройки</string>
 </resources>
