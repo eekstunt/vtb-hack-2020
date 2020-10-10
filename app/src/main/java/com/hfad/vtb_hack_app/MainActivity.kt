@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
 //        TODO: Return "CarNotFoundActivity"
         buttonNotFound.setOnClickListener(){
-            val intent:Intent = Intent(this, CarToBuyActivity::class.java)
+            val intent:Intent = Intent(this, CreditRequestFilledActivity::class.java)
             startActivity(intent)
         }
 
