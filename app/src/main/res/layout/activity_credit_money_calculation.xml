@@ -22,4 +22,80 @@
         app:navigationIcon="@drawable/icon_back"
         app:title="Отмена"
         app:titleTextColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/creditMoneyMonthlyPaymentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ежемесячный платеж"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carToBuyToolbar2" />
+
+    <TextView
+        android:id="@+id/textCreditMoneyMonthlyPaymentSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="200 000 ₽"
+        android:textColor="@color/colorAccent"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/creditMoneyMonthlyPaymentName" />
+
+    <TextView
+        android:id="@+id/creditMoneyConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Ставка 6,9 – 14,2%"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textCreditMoneyMonthlyPaymentSum" />
+
+    <TextView
+        android:id="@+id/creditWholeMoneyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:text="Сумма кредита"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/creditMoneyConditions" />
+
+    <TextView
+        android:id="@+id/creditWholeMoneySum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="6 670 000"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/creditWholeMoneyName"
+        app:layout_constraintTop_toBottomOf="@id/creditWholeMoneyName" />
+
+    <SeekBar
+        android:id="@+id/seekBarCreditWholeMoneySum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="5dp"
+        android:max="10000000"
+        android:progress="6670000"
+        android:thumb="@drawable/seekbar_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creditWholeMoneySum" />
 </androidx.constraintlayout.widget.ConstraintLayout>
