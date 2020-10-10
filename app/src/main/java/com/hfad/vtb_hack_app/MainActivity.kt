@@ -1,34 +1,36 @@
 package com.hfad.vtb_hack_app
 
+import android.R.attr
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import khttp.post
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.io.OutputStreamWriter
 import java.lang.Thread.sleep
-import kotlin.concurrent.thread
 
 
 //функция отправки запроса
 fun  getRecognizedCarTEXT(photo: String) : String {
     val url = "https://gw.hackathon.vtb.ru/vtb/hackathon/car-recognize"
-    val headers=mapOf("X-IBM-Client-Id" to "0addb468a816d42f276fbd1f810c9527")
-    val payload: Map<String, String> = mapOf("content" to photo)
-    val r = post(url, headers = headers, json = payload)
+    val headers=mapOf("Accept" to "application/json",
+        "Content-Type" to "application/json",
+        "X-IBM-Client-Id" to "0addb468a816d42f276fbd1f810c9527")
+    var payload = JSONObject()
+    payload.put("content", photo)
+    var payloadString = payload.toString().replace("\\n", "").replace("\\", "")
+    //println(payloadString)
+    val r = post(url, headers = headers, data = payloadString)
     return r.text
 }
 
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
     val REQUEST_GALLERY = 2
 
-    class SimpleThread(private val str:String, ): Thread() {
+    class SimpleThread(private val str: String): Thread() {
         public override fun run() {
             val sometext=getRecognizedCarTEXT(str)
             answer=sometext
@@ -105,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
                     val imageStream: InputStream? = contentResolver.openInputStream(selectedImage)
                     val imageBitmap = BitmapFactory.decodeStream(imageStream)
-                    val resized= getResizedBitmap(imageBitmap, 200)//maxSize варьируется
+                    val resized = getResizedBitmap(imageBitmap, 200)//maxSize варьируется
 
                     //кодируем в base64
                     val byteArrayOutputStream = ByteArrayOutputStream()
@@ -120,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                     imageView.setImageBitmap(resized)
 
 
-                    val newThrd=SimpleThread(photoString)
+                    val newThrd = SimpleThread(photoString)
                     newThrd.start()
 
                     sleep(1000)//тут надо покопаться, сколько ожидание поставить
@@ -142,9 +144,15 @@ class MainActivity : AppCompatActivity() {
                         byteArray,
                         android.util.Base64.DEFAULT
                     )
+                    println("STRING HERE:")
+                    println(photoString)
 
-                    val newThrd=SimpleThread( photoString)
+                   
+
+
+                    val newThrd = SimpleThread(photoString)
                     newThrd.start()
+
 
                     sleep(1000)//тут надо покопаться, сколько ожидание поставить
 
