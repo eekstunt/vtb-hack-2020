@@ -8,7 +8,8 @@ from tqdm import tqdm
 
 
 # HOST = 'http://127.0.0.1:9988'
-HOST = 'http://0a76dc5fb549.ngrok.io'
+HOST = 'http://84.201.140.87:9988'
+# HOST = 'http://0a76dc5fb549.ngrok.io'
 RAW_ENDPOINT = f'{HOST}/classify'
 JSON_ENDPOINT = f'{HOST}/car-recognize'
 
@@ -28,8 +29,8 @@ def get_confidences(image, use_json=True):
     return result
 
 
-def show_example_confidences(use_json=True):
-    confidences = get_confidences('example.jpeg', use_json=use_json)
+def show_example_confidences(path='example.jpeg', use_json=True):
+    confidences = get_confidences(path, use_json=use_json)
     top = sorted(confidences.items(), key=lambda p: p[1])[::-1]
     for car, confidence in top[:20]:
         print(f'{car:<21} {confidence:.4f}')
@@ -70,8 +71,8 @@ def run_whole_dataset(use_json=True):
         row = {'path': path, 'failed': False, 'time': duration, 'pred': pred, **confidences}
         results.iloc[i] = pd.Series(row)
 
-        # if i % 100 == 0:
-        #     results.to_csv('results.csv')
+        if i % 100 == 0:
+            results.to_csv('results.csv')
 
     default_confidences = {make: 1 / len(confidences) for make in confidences}
     for i, path in enumerate(faulty_paths, start=len(all_paths) - len(faulty_paths)):

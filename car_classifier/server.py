@@ -11,6 +11,7 @@ from inference import MakeModelPredictor
 
 
 USE_PYHEIF = os.getenv('USE_PYHEIF', '') not in ('', '0')
+DUMP = os.getenv('DUMP', '') not in ('', '0')
 if USE_PYHEIF:
     import pyheif
 
@@ -73,8 +74,9 @@ def load_image(bs):
 
 
 def parse_image():
-    with open('dump.txt', 'wb') as f:
-        f.write(request.get_data())
+    if DUMP:
+        with open('dump.txt', 'wb') as f:
+            f.write(request.get_data())
     req = request.get_json(force=True, silent=True)
     if req is None:
         raise ValueError('Could not parse JSON')
