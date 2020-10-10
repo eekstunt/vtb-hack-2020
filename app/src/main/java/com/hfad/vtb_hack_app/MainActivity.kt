@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
     val REQUEST_GALLERY = 2
 
-    class SimpleThread(val txt: TextView, val str:String, val context:Context): Thread() {
+    class SimpleThread(private val str:String, ): Thread() {
         public override fun run() {
-            val sometxt=getRecognizedCarTEXT(str)
-            answer=sometxt
+            val sometext=getRecognizedCarTEXT(str)
+            answer=sometext
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,7 +120,12 @@ class MainActivity : AppCompatActivity() {
                     imageView.setImageBitmap(resized)
 
 
-                    textView.text = photoString
+                    val newThrd=SimpleThread(photoString)
+                    newThrd.start()
+
+                    sleep(1000)//тут надо покопаться, сколько ожидание поставить
+
+                    textView.text = answer
                 }
 
                 REQUEST_IMAGE_CAPTURE -> {
@@ -138,10 +143,10 @@ class MainActivity : AppCompatActivity() {
                         android.util.Base64.DEFAULT
                     )
 
-                    val newthrd=SimpleThread(textView, photoString, this)
-                    newthrd.start()
+                    val newThrd=SimpleThread( photoString)
+                    newThrd.start()
 
-                    sleep(10000)//тут надо покопаться, сколько ожидание поставить
+                    sleep(1000)//тут надо покопаться, сколько ожидание поставить
 
                     textView.text = answer
                 }
