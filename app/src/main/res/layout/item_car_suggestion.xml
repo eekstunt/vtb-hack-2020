@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/activity_car_suggestions_acivity">
+
+    <ImageView
+        android:id="@+id/itemCarSuggestionPhoto"
+        android:layout_width="192dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCarSuggestions"
+        app:srcCompat="@drawable/image_car_porsche_1" />
+
+    <TextView
+        android:id="@+id/itemCarSuggestionPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car.ru, Москва"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/itemCarSuggestionButton"
+        app:layout_constraintTop_toTopOf="@+id/itemCarSuggestionPhoto" />
+
+    <TextView
+        android:id="@+id/itemCarSuggestionDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Porsche 911, новая"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="@+id/itemCarSuggestionButton"
+        app:layout_constraintTop_toBottomOf="@+id/itemCarSuggestionPlace" />
+
+    <Button
+        android:id="@+id/itemCarSuggestionButton"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_rounded_empty_inside"
+        android:text="Открыть"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/itemCarSuggestionPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemCarSuggestionPhoto" />
+</merge>
