@@ -33,9 +33,6 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_GALLERY = 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
-//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-//        setSystemUiVisibility()
         setContentView(R.layout.activity_main)
 
         buttonIdentifyCar.setOnClickListener(){

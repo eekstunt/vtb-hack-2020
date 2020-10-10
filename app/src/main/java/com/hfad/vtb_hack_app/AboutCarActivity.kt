@@ -11,7 +11,7 @@ class AboutCarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about_car)
 
         buttonCarFurther.setOnClickListener(){
-            val intent: Intent = Intent(this, CarNotFoundActivity::class.java)
+            val intent: Intent = Intent(this, CarSuggestionsAcivity::class.java)
             startActivity(intent)
         }
 
