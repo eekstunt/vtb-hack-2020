@@ -1,5 +1,6 @@
 package com.hfad.vtb_hack_app
 
+import android.R.attr
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
@@ -13,24 +14,40 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import khttp.post
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.io.OutputStreamWriter
+import java.lang.Thread.sleep
 
 
 //функция отправки запроса
-fun getRecognizedCarTEXT(photo: String) : String {
+fun  getRecognizedCarTEXT(photo: String) : String {
     val url = "https://gw.hackathon.vtb.ru/vtb/hackathon/car-recognize"
-    val paramsMap: Map<String, String> = mapOf("content" to photo)
-    val response = post(url, params = paramsMap)
-    val obj : String = response.text
-    return obj
+    val headers=mapOf("Accept" to "application/json",
+        "Content-Type" to "application/json",
+        "X-IBM-Client-Id" to "0addb468a816d42f276fbd1f810c9527")
+    var payload = JSONObject()
+    payload.put("content", photo)
+    var payloadString = payload.toString().replace("\\n", "").replace("\\", "")
+    //println(payloadString)
+    val r = post(url, headers = headers, data = payloadString)
+    return r.text
 }
 
+lateinit var answer:String
 
 
 class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
     val REQUEST_GALLERY = 2
+
+    class SimpleThread(private val str: String): Thread() {
+        public override fun run() {
+            val sometext=getRecognizedCarTEXT(str)
+            answer=sometext
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -84,6 +101,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if (resultCode == RESULT_OK && data!=null) {
+
             when (requestCode){
 
                 REQUEST_GALLERY -> {
@@ -91,10 +109,9 @@ class MainActivity : AppCompatActivity() {
 
                     val imageStream: InputStream? = contentResolver.openInputStream(selectedImage)
                     val imageBitmap = BitmapFactory.decodeStream(imageStream)
-                    val resized= getResizedBitmap(imageBitmap, 200)//maxSize варьируется
+                    val resized = getResizedBitmap(imageBitmap, 200)//maxSize варьируется
 
-
-
+                    //кодируем в base64
                     val byteArrayOutputStream = ByteArrayOutputStream()
                     resized!!.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                     val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
@@ -103,19 +120,25 @@ class MainActivity : AppCompatActivity() {
                         android.util.Base64.DEFAULT
                     )
 
-                    //ставит фотку во весь экран
+                    //ставим картиночку в imageView, по сути не нужно
                     imageView.setImageBitmap(resized)
-                    textView.text = photoString
-                    //аналогичный перевод в base64 как при фотографировании выкидывает outOfMemory
 
+
+                    val newThrd = SimpleThread(photoString)
+                    newThrd.start()
+
+                    sleep(1000)//тут надо покопаться, сколько ожидание поставить
+
+                    textView.text = answer
                 }
+
                 REQUEST_IMAGE_CAPTURE -> {
                     val imageBitmap = data?.extras?.get("data") as Bitmap
 
                     //ставим картиночку в imageView, по сути не нужно
                     imageView.setImageBitmap(imageBitmap)
 
-                    //перевод фотки в строку
+                    //кодируем в base64
                     val byteArrayOutputStream = ByteArrayOutputStream()
                     imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                     val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
@@ -123,7 +146,19 @@ class MainActivity : AppCompatActivity() {
                         byteArray,
                         android.util.Base64.DEFAULT
                     )
-                    textView.text = photoString
+                    println("STRING HERE:")
+                    println(photoString)
+
+                   
+
+
+                    val newThrd = SimpleThread(photoString)
+                    newThrd.start()
+
+
+                    sleep(1000)//тут надо покопаться, сколько ожидание поставить
+
+                    textView.text = answer
                 }
 
 

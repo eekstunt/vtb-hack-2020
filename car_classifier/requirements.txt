@@ -1,0 +1,10 @@
+flask
+numpy
+opencv-python
+pandas
+Pillow
+pyheif
+requests
+scikit-learn
+tensorflow
+tqdm
