@@ -10,12 +10,12 @@ class AboutCarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_car)
 
-        buttonCarFurther.setOnClickListener(){
+        buttonAboutCarFurther.setOnClickListener(){
             val intent: Intent = Intent(this, CarSuggestionsAcivity::class.java)
             startActivity(intent)
         }
 
-        buttonCarTryAgain.setOnClickListener(){
+        buttonAboutCarTryAgain.setOnClickListener(){
             val intent: Intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

@@ -8,7 +8,7 @@
     tools:context=".CarSuggestionsAcivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/carSuggestionsBackground"
         android:layout_width="263dp"
         android:layout_height="273dp"
         android:layout_marginTop="34dp"
@@ -18,15 +18,15 @@
         app:srcCompat="@drawable/picture_blue_gradient" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/carSuggestionsPhoto"
         android:layout_width="354dp"
         android:layout_height="212dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/carSuggestionsBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/picture_car_porsche911_full" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textCarSuggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -36,6 +36,16 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/carSuggestionsBackground" />
+
+    <LinearLayout
+        android:id="@+id/layoutCarSuggestions"
+        android:layout_width="409dp"
+        android:layout_height="368dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCarSuggestions"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
