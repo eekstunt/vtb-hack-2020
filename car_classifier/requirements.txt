@@ -1,0 +1,9 @@
+cv2
+flask
+numpy
+pandas
+Pillow
+pyheif
+requests
+tensorflow
+tqdm
