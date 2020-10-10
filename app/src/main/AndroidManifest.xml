@@ -16,8 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CarToBuyActivity"></activity>
-        <activity android:name=".CarSuggestionsAcivity" />
+        <activity android:name=".CarToBuyActivity"
+            android:parentActivityName=".CarSuggestionsActivity">
+        </activity>
+        <activity android:name=".CarSuggestionsActivity"
+            android:parentActivityName=".AboutCarActivity">
+        </activity>
         <activity android:name=".PropertiesActivity" />
         <activity android:name=".CarNotFoundActivity" />
         <activity android:name=".AboutCarActivity" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".CarSuggestionsAcivity">
+    tools:context=".CarSuggestionsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/carSuggestionsToolbar"
@@ -25,6 +25,7 @@
         android:id="@+id/carSuggestionsBackground"
         android:layout_width="263dp"
         android:layout_height="273dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carSuggestionsToolbar"
