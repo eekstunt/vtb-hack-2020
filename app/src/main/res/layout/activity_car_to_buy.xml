@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".CarToBuyActivity">
+
+    <ImageView
+        android:id="@+id/imageCarToBuy"
+        android:layout_width="364dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_car_porsche_for_credit" />
+
+    <ImageView
+        android:id="@+id/carToBuyDecorations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCarToBuy"
+        app:srcCompat="@drawable/other_decorations" />
+
+    <Button
+        android:id="@+id/buttonCarBuyInCredit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_rounded_accent"
+        android:text="Купить в кредит"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageCarToBuy"
+        app:layout_constraintStart_toStartOf="@+id/imageCarToBuy"
+        app:layout_constraintTop_toBottomOf="@+id/carToBuyDecorations" />
+
+    <TextView
+        android:id="@+id/textCarToBuyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Porsche 911, 8 000 км"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/buttonCarBuyInCredit"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCarBuyInCredit" />
+
+    <ImageView
+        android:id="@+id/carToBuyEnergyRectangle"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/buttonCarBuyInCredit"
+        app:layout_constraintStart_toStartOf="@+id/textCarToBuyName"
+        app:layout_constraintTop_toBottomOf="@+id/textCarToBuyName"
+        app:srcCompat="@drawable/rectangle_power" />
+
+    <ImageView
+        android:id="@+id/carToBuyEnergyWheel"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/carToBuyEnergyRectangle"
+        app:layout_constraintStart_toStartOf="@+id/carToBuyEnergyRectangle"
+        app:layout_constraintTop_toTopOf="@+id/carToBuyEnergyRectangle"
+        app:srcCompat="@drawable/image_wheel_with_rectangle" />
+
+    <TextView
+        android:id="@+id/carToBuyEnergyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Мощность"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/carToBuyEnergyWheel"
+        app:layout_constraintTop_toTopOf="@+id/carToBuyEnergyWheel" />
+
+    <TextView
+        android:id="@+id/textCarToBuyEnergyInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="450 л.с./331 кВт"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/carToBuyEnergyWheel"
+        app:layout_constraintStart_toStartOf="@+id/carToBuyEnergyText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

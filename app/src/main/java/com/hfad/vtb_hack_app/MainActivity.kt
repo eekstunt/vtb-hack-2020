@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import khttp.post
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,8 +61,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+//        TODO: Return "CarNotFoundActivity"
         buttonNotFound.setOnClickListener(){
-            val intent:Intent = Intent(this, CarNotFoundActivity::class.java)
+            val intent:Intent = Intent(this, CarToBuyActivity::class.java)
             startActivity(intent)
         }
 
