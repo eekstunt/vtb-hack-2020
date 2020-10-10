@@ -1,35 +1,50 @@
 package com.hfad.vtb_hack_app
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import khttp.post
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.lang.Thread.sleep
+import kotlin.concurrent.thread
 
 
 //функция отправки запроса
-fun getRecognizedCarTEXT(photo: String) : String {
+fun  getRecognizedCarTEXT(photo: String) : String {
     val url = "https://gw.hackathon.vtb.ru/vtb/hackathon/car-recognize"
-    val paramsMap: Map<String, String> = mapOf("content" to photo)
-    val response = post(url, params = paramsMap)
-    val obj : String = response.text
-    return obj
+    val headers=mapOf("X-IBM-Client-Id" to "0addb468a816d42f276fbd1f810c9527")
+    val payload: Map<String, String> = mapOf("content" to photo)
+    val r = post(url, headers = headers, json = payload)
+    return r.text
 }
 
+lateinit var answer:String
 
 
 class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
     val REQUEST_GALLERY = 2
+
+    class SimpleThread(val txt: TextView, val str:String, val context:Context): Thread() {
+        public override fun run() {
+            val sometxt=getRecognizedCarTEXT(str)
+            answer=sometxt
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -82,6 +97,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if (resultCode == RESULT_OK && data!=null) {
+
             when (requestCode){
 
                 REQUEST_GALLERY -> {
@@ -91,8 +107,7 @@ class MainActivity : AppCompatActivity() {
                     val imageBitmap = BitmapFactory.decodeStream(imageStream)
                     val resized= getResizedBitmap(imageBitmap, 200)//maxSize варьируется
 
-
-
+                    //кодируем в base64
                     val byteArrayOutputStream = ByteArrayOutputStream()
                     resized!!.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                     val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
@@ -101,19 +116,20 @@ class MainActivity : AppCompatActivity() {
                         android.util.Base64.DEFAULT
                     )
 
-                    //ставит фотку во весь экран
+                    //ставим картиночку в imageView, по сути не нужно
                     imageView.setImageBitmap(resized)
-                    textView.text = photoString
-                    //аналогичный перевод в base64 как при фотографировании выкидывает outOfMemory
 
+
+                    textView.text = photoString
                 }
+
                 REQUEST_IMAGE_CAPTURE -> {
                     val imageBitmap = data?.extras?.get("data") as Bitmap
 
                     //ставим картиночку в imageView, по сути не нужно
                     imageView.setImageBitmap(imageBitmap)
 
-                    //перевод фотки в строку
+                    //кодируем в base64
                     val byteArrayOutputStream = ByteArrayOutputStream()
                     imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
                     val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
@@ -121,7 +137,13 @@ class MainActivity : AppCompatActivity() {
                         byteArray,
                         android.util.Base64.DEFAULT
                     )
-                    textView.text = photoString
+
+                    val newthrd=SimpleThread(textView, photoString, this)
+                    newthrd.start()
+
+                    sleep(10000)//тут надо покопаться, сколько ожидание поставить
+
+                    textView.text = answer
                 }
 
 
