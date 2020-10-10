@@ -3,4 +3,5 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#999EA9</color>
     <color name="colorAccent">#316FCC</color>
+    <color name="colorBackground">#000000</color>
 </resources>
