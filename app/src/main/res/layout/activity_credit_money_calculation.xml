@@ -9,7 +9,7 @@
     tools:context=".CreditMoneyCalculationActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/carToBuyToolbar2"
+        android:id="@+id/creditMoneyToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorBackground"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/icon_back"
-        app:title="Отмена"
+        app:title=" "
         app:titleTextColor="@color/colorAccent" />
 
     <TextView
@@ -33,10 +33,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carToBuyToolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/creditMoneyToolbar" />
 
     <TextView
-        android:id="@+id/textCreditMoneyMonthlyPaymentSum"
+        android:id="@+id/textCreditMoneyMonthlySum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -58,44 +58,28 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textCreditMoneyMonthlyPaymentSum" />
+        app:layout_constraintTop_toBottomOf="@id/textCreditMoneyMonthlySum" />
 
-    <TextView
-        android:id="@+id/creditWholeMoneyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <include layout="@layout/block_credit_sum_whole" />
+
+    <include layout="@layout/block_credit_length" />
+
+    <include layout="@layout/block_credit_insurance" />
+
+    <Button
+        android:id="@+id/buttonCreditMoneyContinue"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:text="Сумма кредита"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/creditMoneyConditions" />
-
-    <TextView
-        android:id="@+id/creditWholeMoneySum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="6 670 000"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_rounded_accent"
+        android:text="Продолжить"
+        android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/creditWholeMoneyName"
-        app:layout_constraintTop_toBottomOf="@id/creditWholeMoneyName" />
-
-    <SeekBar
-        android:id="@+id/seekBarCreditWholeMoneySum"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="5dp"
-        android:max="10000000"
-        android:progress="6670000"
-        android:thumb="@drawable/seekbar_thumb"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditWholeMoneySum" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

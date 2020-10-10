@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreditMoneyCalculationActivity"></activity>
+        <activity android:name=".CreditMoneyCalculationActivity"
+            android:parentActivityName=".CarToBuyActivity"></activity>
         <activity
             android:name=".CarToBuyActivity"
             android:parentActivityName=".CarSuggestionsActivity"></activity>
