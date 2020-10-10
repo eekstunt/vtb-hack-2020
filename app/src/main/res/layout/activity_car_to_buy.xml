@@ -7,6 +7,20 @@
     android:background="@color/colorBackground"
     tools:context=".CarToBuyActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/carToBuyToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/icon_back"
+        app:title="Avito, Москва"
+        app:titleTextColor="@color/colorPrimary" />
+
     <ImageView
         android:id="@+id/imageCarToBuy"
         android:layout_width="364dp"
@@ -93,19 +107,5 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/carToBuyEnergyWheel"
         app:layout_constraintStart_toStartOf="@+id/carToBuyEnergyText" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/carToBuyToolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/icon_back"
-        app:title="Porsche 911"
-        app:titleTextColor="@color/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

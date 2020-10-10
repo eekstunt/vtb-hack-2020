@@ -7,14 +7,27 @@
     android:background="@color/colorBackground"
     tools:context=".CarSuggestionsAcivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/carSuggestionsToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/icon_back"
+        app:title="Porsche 911"
+        app:titleTextColor="@color/colorPrimary" />
+
     <ImageView
         android:id="@+id/carSuggestionsBackground"
         android:layout_width="263dp"
         android:layout_height="273dp"
-        android:layout_marginTop="34dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carSuggestionsToolbar"
         app:srcCompat="@drawable/picture_blue_gradient" />
 
     <ImageView

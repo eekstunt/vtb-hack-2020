@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutCarBackground"
         app:layout_constraintTop_toBottomOf="@id/buttonAboutCarTryAgain"
         app:srcCompat="@drawable/picture_car_porsche911"
         tools:layout_editor_absoluteX="16dp" />
