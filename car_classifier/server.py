@@ -54,7 +54,8 @@ def load_image(bs):
                 "raw",
                 heif.mode,
                 heif.stride)
-        raise
+        else:
+            raise
 
     if image.mode in ('P', 'RGBA'):
         image = image.convert('RGBA')
