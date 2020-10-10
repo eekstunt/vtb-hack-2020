@@ -1,6 +1,6 @@
-cv2
 flask
 numpy
+opencv-python
 pandas
 Pillow
 pyheif
