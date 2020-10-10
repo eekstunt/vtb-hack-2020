@@ -10,7 +10,7 @@ class CarSuggestionsAcivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_car_suggestions_acivity)
 
-        buttonItemCarSuggestion.setOnClickListener(){
+        buttonItemCarSuggestionOpen.setOnClickListener(){
             val intent: Intent = Intent(this, CarToBuyActivity::class.java)
             startActivity(intent)
         }
