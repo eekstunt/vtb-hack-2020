@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarNotFoundActivity">
+    tools:context=".InitializeRecognitionActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -167,7 +167,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/imageView23"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
@@ -177,85 +177,41 @@
         app:srcCompat="@drawable/rectangle_fog" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/imageView24"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rectangle_modal_window" />
-
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/imageView15"
-        app:srcCompat="@drawable/image_car_photo_4" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Не удалось распознать машину"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="К сожалению, в этот раз не получилось определить марку и модель. Попробуйте сфотографировать с другого ракурса или при новом освещении."
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:srcCompat="@drawable/rectangle_curtain" />
 
     <Button
-        android:id="@+id/buttonCarNotFoundToHome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rounded_empty"
-        android:text="Вернуться на главный"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/imageView15"
-        app:layout_constraintEnd_toEndOf="@id/imageView15"
-        app:layout_constraintStart_toStartOf="@id/imageView15" />
-
-    <Button
-        android:id="@+id/buttonCarNotFoundTryAgain"
+        android:id="@+id/buttonStartRecognition2"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/btn_rounded_accent"
-        android:text="Попробовать еще"
+        android:text="ОТКРЫТЬ КАМЕРУ"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/buttonCarNotFoundToHome"
-        app:layout_constraintEnd_toEndOf="@id/imageView15"
-        app:layout_constraintStart_toStartOf="@id/imageView15" />
+        app:layout_constraintBottom_toBottomOf="@id/imageView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/buttonStartRecognitionFromGallery"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_rounded_accent"
+        android:text="ЗАГРУЗИТЬ ИЗ ГАЛЕРЕИ"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStartRecognition2"
+        app:layout_constraintEnd_toEndOf="@+id/buttonStartRecognition2"
+        app:layout_constraintStart_toStartOf="@+id/buttonStartRecognition2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

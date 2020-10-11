@@ -5,28 +5,28 @@
     tools:showIn="@layout/activity_car_suggestions_acivity">
 
     <ImageView
-        android:id="@+id/itemCarSuggestionPhoto"
+        android:id="@+id/imageItemCarSuggestion"
         android:layout_width="192dp"
         android:layout_height="108dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCarSuggestions"
+        app:layout_constraintTop_toBottomOf="@+id/carSuggestionsText"
         app:srcCompat="@drawable/image_car_porsche_1" />
 
     <TextView
-        android:id="@+id/itemCarSuggestionPlace"
+        android:id="@+id/textItemCarSuggestionPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Car.ru, Москва"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttonItemCarSuggestion"
-        app:layout_constraintTop_toTopOf="@+id/itemCarSuggestionPhoto" />
+        app:layout_constraintStart_toStartOf="@+id/buttonItemCarSuggestionOpen"
+        app:layout_constraintTop_toTopOf="@+id/imageItemCarSuggestion" />
 
     <TextView
-        android:id="@+id/itemCarSuggestionDescription"
+        android:id="@+id/textItemCarSuggestionDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -35,11 +35,11 @@
         android:textColor="@color/colorPrimary"
         android:textSize="12sp"
         android:typeface="normal"
-        app:layout_constraintStart_toStartOf="@+id/buttonItemCarSuggestion"
-        app:layout_constraintTop_toBottomOf="@+id/itemCarSuggestionPlace" />
+        app:layout_constraintStart_toStartOf="@+id/buttonItemCarSuggestionOpen"
+        app:layout_constraintTop_toBottomOf="@+id/textItemCarSuggestionPlace" />
 
     <Button
-        android:id="@+id/buttonItemCarSuggestion"
+        android:id="@+id/buttonItemCarSuggestionOpen"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
@@ -48,7 +48,7 @@
         android:text="Открыть"
         android:textAllCaps="true"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/itemCarSuggestionPhoto"
+        app:layout_constraintBottom_toBottomOf="@+id/imageItemCarSuggestion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/itemCarSuggestionPhoto" />
+        app:layout_constraintStart_toEndOf="@+id/imageItemCarSuggestion" />
 </merge>

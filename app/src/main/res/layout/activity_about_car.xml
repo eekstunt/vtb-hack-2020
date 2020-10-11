@@ -17,11 +17,12 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
-        android:id="@+id/aboutCarPhoto"
+        android:id="@+id/imageAboutCar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutCarBackground"
         app:layout_constraintTop_toBottomOf="@id/buttonAboutCarTryAgain"
         app:srcCompat="@drawable/picture_car_porsche911"
         tools:layout_editor_absoluteX="16dp" />
@@ -60,13 +61,12 @@
         app:layout_constraintBottom_toTopOf="@+id/textAboutCarDescription"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/textAboutCarDescription"
         android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="38dp"
-        android:gravity="start|top"
+        android:layout_marginBottom="36dp"
         android:lineSpacingExtra="4sp"
         android:padding="0dp"
         android:singleLine="false"
@@ -76,8 +76,8 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonAboutCarFurther"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/textAboutCarMoreDetails"
+    <TextView
+        android:id="@+id/aboutCarMoreDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

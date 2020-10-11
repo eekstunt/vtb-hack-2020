@@ -6,37 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="_"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Старт! (с дизайном)"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFromGallery"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonFromGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Опознать машину из галереи"
+        app:layout_constraintBottom_toTopOf="@+id/buttonIdentifyCar"
+        app:layout_constraintEnd_toEndOf="@+id/buttonStart"
+        app:layout_constraintStart_toStartOf="@+id/buttonStart"
+        app:layout_constraintTop_toBottomOf="@id/buttonStart"
+        app:layout_constraintVertical_bias="0.56" />
+
     <Button
         android:id="@+id/buttonIdentifyCar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Опознать машину по фото!"
         app:layout_constraintBottom_toTopOf="@+id/buttonAboutCar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonFromGallery"
+        app:layout_constraintStart_toStartOf="@+id/buttonFromGallery"
         app:layout_constraintTop_toBottomOf="@+id/buttonFromGallery" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIdentifyCar"
-        app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@android:drawable/alert_dark_frame" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="_"
-        app:layout_constraintBottom_toTopOf="@+id/buttonIdentifyCar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/buttonAboutCar"
@@ -44,8 +58,8 @@
         android:layout_height="wrap_content"
         android:text="Машина опознана"
         app:layout_constraintBottom_toTopOf="@+id/buttonNotFound"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonIdentifyCar"
+        app:layout_constraintStart_toStartOf="@+id/buttonIdentifyCar"
         app:layout_constraintTop_toBottomOf="@+id/buttonIdentifyCar" />
 
     <Button
@@ -54,21 +68,20 @@
         android:layout_height="wrap_content"
         android:text="Машина не опознана"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAboutCar"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAboutCar"
+        app:layout_constraintStart_toStartOf="@+id/buttonAboutCar"
+        app:layout_constraintTop_toBottomOf="@id/buttonAboutCar"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/buttonFromGallery"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Опознать машину из галереи"
-        app:layout_constraintBottom_toTopOf="@+id/buttonIdentifyCar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonNotFound"
+        app:layout_constraintStart_toStartOf="@+id/buttonNotFound"
+        app:layout_constraintTop_toBottomOf="@id/buttonNotFound"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@android:drawable/alert_dark_frame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

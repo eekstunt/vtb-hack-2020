@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        buttonStart.setOnClickListener(){
+            val intent:Intent = Intent(this, StartActivity::class.java)
+            startActivity(intent)
+        }
+
         buttonIdentifyCar.setOnClickListener(){
             dispatchTakePictureIntent()
         }
@@ -61,9 +66,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        TODO: Return "CarNotFoundActivity"
         buttonNotFound.setOnClickListener(){
-            val intent:Intent = Intent(this, CarToBuyActivity::class.java)
+            val intent:Intent = Intent(this, CarNotFoundActivity::class.java)
             startActivity(intent)
         }
 
@@ -218,7 +222,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun dispatchTakePictureFromGalleryIntent() {
+    fun dispatchTakePictureFromGalleryIntent() {
         val takePictureIntent = Intent(Intent.ACTION_PICK)
         takePictureIntent.type = "image/*"
         takePictureIntent.action=Intent.ACTION_GET_CONTENT
