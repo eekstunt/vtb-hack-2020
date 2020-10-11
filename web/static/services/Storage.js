@@ -129,6 +129,9 @@ let createStorage = () => {
     if (savedStorage !== null) {
         try {
             savedStorage = JSON.parse(savedStorage);
+            if (Object.keys(savedStorage).length !== STORAGE_KEYS.length) {
+                throw new Error('Storage format mismatch');
+            }
             STORAGE_KEYS.forEach(key => {
                 storage[key] = savedStorage[key];
             });
