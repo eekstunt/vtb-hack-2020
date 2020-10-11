@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/activity_credit_money_calculation">
+
+    <TextView
+        android:id="@+id/creditInsuranceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="33dp"
+        android:text="Защита кредита"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creditLengthMin" />
+
+    <TextView
+        android:id="@+id/creditInsuranceName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Защита жизни и здоровья"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/creditInsuranceName"
+        app:layout_constraintTop_toBottomOf="@+id/creditInsuranceName" />
+
+    <TextView
+        android:id="@+id/creditInsuranceDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="+ 504 ₽/мес"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/creditInsuranceName2"
+        app:layout_constraintTop_toBottomOf="@+id/creditInsuranceName2" />
+
+    <Switch
+        android:id="@+id/switchCreditInsurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:checked="true"
+        android:text="Switch"
+        app:layout_constraintBottom_toBottomOf="@+id/creditInsuranceDetails"
+        app:layout_constraintEnd_toEndOf="parent" />
+</merge>
