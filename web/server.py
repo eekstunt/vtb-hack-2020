@@ -32,6 +32,9 @@ class Marketplace:
                 'title': make['title'],
                 'titleRus': make['titleRus']}
             for make in self.data}
+        for make in self.data:
+            self.make_by_title[make['alias'].lower()] = self.make_by_title[make['title'].lower()]
+            self.models_by_make[make['alias'].lower()] = self.models_by_make[make['title'].lower()]
 
     @classmethod
     def _extract_info(cls, model):
@@ -55,15 +58,16 @@ class Marketplace:
             if model.lower() in model_key:
                 break
         else:
-            raise KeyError(
-                f'Could not find "{model}" among the models of "{make}"'
-                f' (available keys: {", ".join(models.keys())})')
+            info = next(iter(models.values()))
+            # raise KeyError(
+            #     f'Could not find "{model}" among the models of "{make}"'
+            #     f' (available keys: {", ".join(models.keys())})')
 
-        info['car'] = make_model
         info['make'] = make_info['title']
         info['makeRus'] = make_info['titleRus']
         info['makeModel'] = ' '.join((info['make'], info['title']))
         info['makeModelRus'] = ' '.join((info['makeRus'], info['titleRus']))
+        info['car'] = info['makeModelRus']
         return info
 
 
