@@ -7,20 +7,6 @@
     android:background="@color/colorBackground"
     tools:context=".StartActivity">
 
-    <Button
-        android:id="@+id/buttonCreditMoneyContinue3"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rounded_accent"
-        android:text="Распознать авто"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView14"
-        app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintStart_toStartOf="@+id/imageView14" />
-
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
@@ -147,6 +133,20 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/buttonStartRecognition"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_rounded_accent"
+        android:text="Распознать авто"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView14"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintStart_toStartOf="@+id/imageView14" />
 
     <ImageView
         android:id="@+id/imageView14"
