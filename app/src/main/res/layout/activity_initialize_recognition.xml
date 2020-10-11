@@ -150,12 +150,12 @@
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView14"
-            app:layout_constraintEnd_toEndOf="@+id/imageView14"
-            app:layout_constraintStart_toStartOf="@+id/imageView14" />
+            app:layout_constraintBottom_toTopOf="@+id/buttonStartRecognitionByPhoto"
+            app:layout_constraintEnd_toEndOf="@+id/buttonStartRecognitionByPhoto"
+            app:layout_constraintStart_toStartOf="@+id/buttonStartRecognitionByPhoto" />
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/buttonStartRecognitionByPhoto"
             android:layout_width="370dp"
             android:layout_height="95dp"
             android:layout_marginBottom="16dp"
@@ -202,7 +202,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonStartRecognition3"
+        android:id="@+id/buttonStartRecognitionFromGallery"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
