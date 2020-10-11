@@ -9,20 +9,27 @@ let SelectImage = {
     render : async () => {
         return `
             <section class="section">
-                <h1> Сфотографируйте машину </h1>
-                <form id="image_form">
-                  <label for="img">Загрузить фотографию</label>
-                  <input type="file" id="img" name="img" accept="image/*">
-                  <br/><input type="submit" value="Отправить">
-                </form>
+                <div class="file is-link is-boxed is-centered">
+                    <label class="file-label" for="img">
+                        <input class="file-input" type="file" id="img" name="img" accept="image/*">
+                        <span class="file-cta">
+                            <span class="file-label">
+                                Сфотографировать машину
+                            </span>
+                        </span>
+                    </label>
+                </div>
             </section>
         `;
     }
 
     , after_render: async () => {
-        document.getElementById('image_form').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const file = document.getElementById('img').files[0];
+        const fileInput = document.getElementById('img');
+        fileInput.addEventListener('change', async () => {
+            if (fileInput.files.length === 0) {
+                return;
+            }
+            const file = fileInput.files[0];
             try {
                 const raw_resp = await fetch('/car-recognize', {method: 'POST', body: file});
                 const resp = await raw_resp.json();

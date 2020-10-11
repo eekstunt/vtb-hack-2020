@@ -26,53 +26,77 @@ let Loan = {
         return `
             <section class="section">
                 <div class="field">
-                    <label for="first_name">Имя: </label>
-                    <input class="my_input" id="first_name" type="text" placeholder="Иван">
+                    <label for="first_name" class="label">Имя: </label>
+                    <div class="control">
+                        <input class="input" id="first_name" type="text" placeholder="Иван">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="middle_name">Отчество: </label>
-                    <input class="my_input" id="middle_name" type="text" placeholder="Иванович">
+                    <label for="middle_name" class="label">Отчество: </label>
+                    <div class="control">
+                        <input class="input" id="middle_name" type="text" placeholder="Иванович">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="family_name">Фамилия: </label>
-                    <input class="my_input" id="family_name" type="text" placeholder="Иванов">
+                    <label for="family_name" class="label">Фамилия: </label>
+                    <div class="control">
+                        <input class="input" id="family_name" type="text" placeholder="Иванов">
+                    </div>
                 </div>
                 <div class="field">
-                    <input type="radio" id="male" name="gender" value="male" checked>
-                    <label for="male">Мужчина</label>
+                    <label for="male" class="radio">
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                        Мужчина
+                    </label>
                     
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Женщина</label>
+                    <label for="female" class="radio">
+                        <input type="radio" id="female" name="gender" value="female">
+                        Женщина
+                    </label>
                 </div>
                 <div class="field">
-                    <label for="email">Email: </label>
-                    <input class="my_input" id="email" type="email" placeholder="ivan.ivanov@example.com">
+                    <label for="email" class="label">Email: </label>
+                    <div class="control">
+                        <input class="input" id="email" type="email" placeholder="ivan.ivanov@example.com">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="phone">Телефон: </label>
-                    <input class="my_input" id="phone" type="text" placeholder="+79990000000">
+                    <label for="phone" class="label">Телефон: </label>
+                    <div class="control">
+                        <input class="input" id="phone" type="text" placeholder="+79990000000">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="birth_date_time">Дата рождения: </label>
-                    <input class="my_input" id="birth_date_time" type="date">
+                    <label for="birth_date_time" class="label">Дата рождения: </label>
+                    <div class="control">
+                        <input class="input" id="birth_date_time" type="date">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="birth_place">Место рождения: </label>
-                    <input class="my_input" id="birth_place" type="text" placeholder="г. Воронеж">
+                    <label for="birth_place" class="label">Место рождения: </label>
+                    <div class="control">
+                        <input class="input" id="birth_place" type="text" placeholder="г. Воронеж">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="nationality_country_code">Национальность (код страны): </label>
-                    <input class="my_input" id="nationality_country_code" type="text" placeholder="RU" maxlength="2">
+                    <label for="nationality_country_code" class="label">Национальность (код страны): </label>
+                    <div class="control">
+                        <input class="input" id="nationality_country_code" type="text" placeholder="RU" maxlength="2">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="income_amount">Среднемесячная зарплата: </label>
-                    <input class="my_input" id="income_amount" type="number" placeholder="140000">
+                    <label for="income_amount" class="label">Среднемесячная зарплата: </label>
+                    <div class="control">
+                        <input class="input" id="income_amount" type="number" placeholder="140000">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="comment">Комментарий: </label>
-                    <textarea class="my_input" id="comment" placeholder=""></textarea>
+                    <label for="comment" class="label">Комментарий: </label>
+                    <div class="control">
+                        <textarea class="textarea" id="comment" placeholder=""></textarea>
+                    </div>
                 </div>
-                <button id="submit">Оставить заявку</button>
+                <button id="submit" class="button is-link">Оставить заявку</button>
             </section>
             <section class="section">
                 <div id="application_info" style="display: none"></div>
@@ -112,6 +136,8 @@ let Loan = {
     }
 
     , submit: async () => {
+        const btn = document.getElementById("submit");
+        btn.classList.add('is-loading');
         let formData = {};
         IDS.forEach( id => {formData[id] = document.getElementById(id).value;});
         formData.gender = document.querySelector('input[name="gender"]:checked').value;
@@ -146,11 +172,13 @@ let Loan = {
             const raw_resp = await fetch('/carloan', {method: 'POST', body: JSON.stringify(payload)});
             const resp = await raw_resp.json();
             storage.setApplicationInfo(resp);
-            Loan.renderApplicationInfo();
+            await Loan.renderApplicationInfo();
         } catch (err) {
             console.log(err);
+            appInfoHolder.style.display = 'none';
             alert('error');
         }
+        btn.classList.remove('is-loading');
     }
 };
 

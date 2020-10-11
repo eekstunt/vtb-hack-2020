@@ -33,33 +33,48 @@ let Calculate = {
             <section class="section">
                 <b> Калькулятор кредита ${settings.name}: </b>
                 <div class="field">
-                    <label for="cost">Стоимость машины: </label>
-                    <input class="my_input" id="cost" type="number" value="${params.cost}">
+                    <label for="cost" class="label">Стоимость машины: </label>
+                    <div class="control">
+                        <input class="input" id="cost" type="number" value="${params.cost}">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="initialFee">Начальный взнос: </label>
-                    <input class="my_input" id="initialFee" type="number" value="${params.initialFee}">
+                    <label for="initialFee" class="label">Начальный взнос: </label>
+                    <div class="control">
+                        <input class="input" id="initialFee" type="number" value="${params.initialFee}">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="kaskoValue">Стоимость КАСКО: </label>
-                    <input class="my_input" id="kaskoValue" type="number" value="${params.kaskoValue}">
+                    <label for="kaskoValue" class="label">Стоимость КАСКО: </label>
+                    <div class="control">
+                        <input class="input" id="kaskoValue" type="number" value="${params.kaskoValue}">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="residualPayment">Остаточный платёж: </label>
-                    <input class="my_input" id="residualPayment" type="number" value="${params.residualPayment}">
+                    <label for="residualPayment" class="label">Остаточный платёж: </label>
+                    <div class="control">
+                        <input class="input" id="residualPayment" type="number" value="${params.residualPayment}">
+                    </div>
                 </div>
                 <div class="field">
-                    <label for="term">Срок погашения: </label>
-                    <input class="my_input" id="term" type="number" value="${params.term}">
+                    <label for="term" class="label">Срок погашения: </label>
+                    <div class="control">
+                        <input class="input" id="term" type="number" value="${params.term}">
+                    </div>
                 </div>
                 ${settings.specialConditions.map(cond => `
                     <div class="field">
-                        <input class="my_input" id="${cond['id']}" name='${cond['id']}'
-                         type="checkbox"${params.specialConditions.indexOf(cond.id) >= 0 ? ' checked' : ''}>
-                        <label for="${cond['id']}">${cond['name']}</label>
+                    <div class="control">    
+                        <label for="${cond['id']}" class="label">
+                            <input class="checkbox" id="${cond['id']}" name='${cond['id']}'
+                             type="checkbox"${params.specialConditions.indexOf(cond.id) >= 0 ? ' checked' : ''}>
+                         
+                            ${cond['name']}
+                        </label>
+                    </div>
                     </div>
                 `).join('')}
-                <button id="recalc">Рассчитать параметры кредита</button>
+                <button id="recalc" class="button is-link">Рассчитать параметры кредита</button>
             </section>
             ${storage.loanResponse === null ? '' : `
             <section class="section">
@@ -70,17 +85,17 @@ let Calculate = {
                 ${graph === null ? '' : `
                 <br/>
                 <p><b>Таблица выплат:</b></p>
-                <div class="overflow">
-                <table>
-                    ${graphRows.map(row => `
-                        <tr>
-                            ${row.map(item => `<td>${item}</td>`).join('\n')}
-                        </tr>
-                    `).join('\n')}
-                </table>
+                <div class="table-container">
+                    <table class="table">
+                        ${graphRows.map(row => `
+                            <tr>
+                                ${row.map(item => `<td class="has-text-right">${item}</td>`).join('\n')}
+                            </tr>
+                        `).join('\n')}
+                    </table>
                 </div>
                 `}
-                <button id="get_loan">Взять кредит с такими параметрами</button>
+                <button id="get_loan" class="button is-link">Взять кредит с такими параметрами</button>
             </section>
             `}`;
     },
@@ -92,9 +107,12 @@ let Calculate = {
                 Utils.goto('/loan');
             });
         }
-        document.getElementById("recalc").addEventListener('click', async () => {
+        const recalc = document.getElementById("recalc");
+        recalc.addEventListener('click', async () => {
+            recalc.classList.add('is-loading');
             await Calculate.recalc();
             document.getElementById('calc_container').innerHTML = await Calculate.doRender();
+            recalc.classList.remove('is-loading');
             await Calculate.after_render();
         });
     },

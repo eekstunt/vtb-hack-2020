@@ -9,9 +9,13 @@ let Car = {
         }
         return `
             <section class="section">
-                <p id="title"> <b>${storage.car}</b>: </p>
-                <div id="car_info">Loading info...</div>
-                <button id="calculate">Открыть калькулятор</button>
+                <div class="columns is-mobile is-centered">
+                    <div class="column is-half">
+                        <p id="title"> <b>${storage.car}</b>: </p>
+                        <div id="car_info">Loading info...</div>
+                        <button id="calculate" class="button is-link">Открыть калькулятор</button>
+                    </div>
+                </div>
             </section>
         `
     }
@@ -20,7 +24,7 @@ let Car = {
         let carInfo = await storage.getCarInfo();
         let carInfoHolder = document.getElementById("car_info");
         carInfoHolder.innerHTML = `
-            <img src="${carInfo['photo']}" />
+            <img src="${carInfo['photo']}" style="transform: scaleX(-1)"/>
             <p>Цена &mdash; от ${carInfo['price']} ₽</p> 
         `;
         document.getElementById('title').innerHTML = `<b>${carInfo.makeModelRus}</b>`;
