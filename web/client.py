@@ -1,3 +1,4 @@
+from pprint import pprint
 import requests
 
 
@@ -13,8 +14,8 @@ def request(endpoint, json=None):
 
 
 def main():
-    resp = request('settings')
-    print(resp)
+    resp = request('payments-graph', json=dict(contractRate=13.6, lastPayment=0, loanAmount=3761234, term=4, payment=102028))
+    pprint(resp)
     # print(resp.keys())
 
 

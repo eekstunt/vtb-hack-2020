@@ -1,3 +1,5 @@
+import storage from '../../services/Storage.js'
+
 let Navbar = {
     render: async () => {
         return `
@@ -8,12 +10,17 @@ let Navbar = {
                             <a class="navbar-item" href="/#/">
                                 Выбрать машину
                             </a>
-                            <a class="navbar-item" href="/#/car">
-                                Информация о машине
-                            </a>
-                            <a class="navbar-item" href="/#/calculate">
-                                Кредитный калькулятор
-                            </a>
+                            ${storage.car === null ? '' : `
+                                <a class="navbar-item" href="/#/car">
+                                    Информация о машине
+                                </a>
+                                <a class="navbar-item" href="/#/calculator">
+                                    Кредитный калькулятор
+                                </a>
+                                <a class="navbar-item" href="/#/loan">
+                                    Заявка на кредит
+                                </a>`
+                            }
                         </div>
                     </div>
                 </div>

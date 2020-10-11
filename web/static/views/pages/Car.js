@@ -23,8 +23,11 @@ let Car = {
             <img src="${carInfo['photo']}" />
             <p>Цена &mdash; от ${carInfo['price']} ₽</p> 
         `;
-        document.getElementById("calculate").addEventListener('click', () => {
-            Utils.goto('/calculate');
+        document.getElementById("calculate").addEventListener('click', async () => {
+            const loanParams = await storage.getLoanParams();
+            loanParams.cost = storage.carInfo.price;
+            storage.setLoanParams(loanParams);
+            Utils.goto('/calculator');
         });
     }
 };

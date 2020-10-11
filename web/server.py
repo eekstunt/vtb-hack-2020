@@ -99,6 +99,11 @@ def get_car_info():
     return jsonify(get_marketplace().get_model_info(make_model))
 
 
+@app.route('/settings')
+def settings():
+    return jsonify(call_api('settings?name=Haval&language=ru-RU'))
+
+
 def get_api_handler(endpoint):
     def handler():
         payload = None
@@ -109,13 +114,12 @@ def get_api_handler(endpoint):
     return handler
 
 
-def register_endpoints(get_endpoints, post_endpoints, handler_factory):
-    for method, endpoints in (('GET', get_endpoints), ('POST', post_endpoints)):
-        for endpoint in endpoints:
-            app.route(f'/{endpoint}', methods=[method])(handler_factory(endpoint))
+def register_endpoints(post_endpoints, handler_factory):
+    for endpoint in post_endpoints:
+        app.route(f'/{endpoint}', methods=['POST'])(handler_factory(endpoint))
 
 
-register_endpoints(GET_ENDPOINTS, POST_ENDPOINTS, get_api_handler)
+register_endpoints(POST_ENDPOINTS, get_api_handler)
 
 
 if __name__ == '__main__':

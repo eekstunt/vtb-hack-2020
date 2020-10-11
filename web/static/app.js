@@ -15,8 +15,8 @@ import Utils        from './services/Utils.js'
 const routes = {
     '/'             : SelectImage
     , '/car'        : Car
+    , '/calculator' : Calculate
     , '/loan'       : Loan
-    , '/calculate'  : Calculate
 };
 
 
@@ -44,12 +44,17 @@ const router = async () => {
     
     // Get the page from our hash of supported routes.
     // If the parsed URL is not in our list of supported routes, select the 404 page instead
-    let page = routes[parsedURL] ? routes[parsedURL] : Error404
-    content.innerHTML = await page.render();
-    if (oldHash === location.hash) {
-        await page.after_render();
+    let page = routes[parsedURL] ? routes[parsedURL] : Error404;
+
+    try {
+        content.innerHTML = await page.render();
+        if (oldHash === location.hash) {
+            await page.after_render();
+        }
+    } catch (err) {
+        console.log(err);
+        alert('error');
     }
-  
 };
 
 // Listen on hash change:
