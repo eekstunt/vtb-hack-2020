@@ -16,7 +16,7 @@ class AboutCarActivity : AppCompatActivity() {
         }
 
         buttonAboutCarTryAgain.setOnClickListener(){
-            val intent: Intent = Intent(this, MainActivity::class.java)
+            val intent: Intent = Intent(this, StartActivity::class.java)
             startActivity(intent)
         }
     }
