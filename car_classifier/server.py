@@ -108,7 +108,7 @@ def parse_image():
 
     if DUMP:
         try:
-            dump_image(request.get_data())
+            dump_image(bs)
         except Exception:
             pass
 
