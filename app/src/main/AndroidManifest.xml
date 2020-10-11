@@ -17,7 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".InitializeRecognitionActivity"></activity>
-        <activity android:name=".StartActivity" />
+
+        <activity android:name=".StartActivity">
+
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity android:name=".CreditRequestFilledActivity" />
         <activity
             android:name=".CreditMoneyCalculationActivity"
@@ -31,13 +39,8 @@
         <activity android:name=".PropertiesActivity" />
         <activity android:name=".CarNotFoundActivity" />
         <activity android:name=".AboutCarActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
