@@ -22,6 +22,7 @@ import java.lang.Thread.sleep
 
 
 //функция отправки запроса
+/*
 fun  getRecognizedCarTEXT(photo: String) : String {
     val url = "https://gw.hackathon.vtb.ru/vtb/hackathon/car-recognize"
     val headers=mapOf("Accept" to "application/json",
@@ -34,13 +35,12 @@ fun  getRecognizedCarTEXT(photo: String) : String {
     val r = post(url, headers = headers, data = payloadString)
     return r.text
 }
-
-lateinit var answer:String
+*/
+//lateinit var answer:String
 
 
 class MainActivity : AppCompatActivity() {
-    val REQUEST_IMAGE_CAPTURE = 1
-    val REQUEST_GALLERY = 2
+
 
     class SimpleThread(private val str: String): Thread() {
         public override fun run() {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonIdentifyCar.setOnClickListener(){
-            dispatchTakePictureIntent()
+           // dispatchTakePictureIntent()
         }
 
         buttonAboutCar.setOnClickListener(){
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonFromGallery.setOnClickListener(){
-            dispatchTakePictureFromGalleryIntent()
+           // dispatchTakePictureFromGalleryIntent()
         }
 
     }
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
+/*
     //Приняли фотку и обрабатываем ее, переводя в строку и отправляя запрос на сервер
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity() {
 
             //textView.text=photoString
         }
-    }
+    } */
 
 
     private fun getResizedBitmap(image: Bitmap, maxSize: Int): Bitmap? {
@@ -213,34 +213,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Запускаем камеру и принимаем фотку в MainActivity
-    private fun dispatchTakePictureIntent() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
-            // display error state to the user
-        }
-    }
-
-    fun dispatchTakePictureFromGalleryIntent() {
-        val takePictureIntent = Intent(Intent.ACTION_PICK)
-        takePictureIntent.type = "image/*"
-        takePictureIntent.action=Intent.ACTION_GET_CONTENT
-        try {
-            startActivityForResult(
-                Intent.createChooser(takePictureIntent, "Pick an image"),
-                REQUEST_GALLERY
-            )
-        } catch (e: ActivityNotFoundException) {
-            // display error state to the user
-        }
-    }
 
 
-    //я вообще не помню откуда это взялось
-    private fun takeResponseByBase64(bmpString: String){
 
-    }
+
 
 
 
