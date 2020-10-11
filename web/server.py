@@ -1,8 +1,7 @@
 from base64 import b64encode
 
 import requests
-from flask import Flask, jsonify, request
-
+from flask import Flask, jsonify, request, abort
 
 API_KEY = '0addb468a816d42f276fbd1f810c9527'
 # API_KEY = '45e8a43bfef45bc3b9b9fdf93e6fa7d2'
@@ -90,13 +89,19 @@ def root():
 @app.route('/car-recognize', methods=['POST'])
 def recognize():
     image = request.get_data()
-    return jsonify(call_api('car-recognize', payload={'content': b64encode(image).decode('utf-8')}))
+    resp = call_api('car-recognize', payload={'content': b64encode(image).decode('utf-8')})
+    return jsonify(resp)
 
 
 @app.route('/get-car-info', methods=['POST'])
 def get_car_info():
     make_model = request.get_json(force=True)['make_model']
-    return jsonify(get_marketplace().get_model_info(make_model))
+    marketplace = get_marketplace()
+    try:
+        info = marketplace.get_model_info(make_model)
+    except KeyError:
+        info = marketplace.get_model_info('Lada Granta')
+    return jsonify(info)
 
 
 @app.route('/settings')

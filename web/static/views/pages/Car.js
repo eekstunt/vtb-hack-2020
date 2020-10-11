@@ -9,7 +9,7 @@ let Car = {
         }
         return `
             <section class="section">
-                <p> ${storage.car}: </p>
+                <p id="title"> <b>${storage.car}</b>: </p>
                 <div id="car_info">Loading info...</div>
                 <button id="calculate">Открыть калькулятор</button>
             </section>
@@ -23,6 +23,7 @@ let Car = {
             <img src="${carInfo['photo']}" />
             <p>Цена &mdash; от ${carInfo['price']} ₽</p> 
         `;
+        document.getElementById('title').innerHTML = `<b>${carInfo.makeModelRus}</b>`;
         document.getElementById("calculate").addEventListener('click', async () => {
             const loanParams = await storage.getLoanParams();
             loanParams.cost = storage.carInfo.price;
