@@ -90,7 +90,7 @@ def root():
 @app.route('/car-recognize', methods=['POST'])
 def recognize():
     image = request.get_data()
-    return jsonify(call_api('car-recognize', payload={'content': b64encode(image)}))
+    return jsonify(call_api('car-recognize', payload={'content': b64encode(image).decode('utf-8')}))
 
 
 @app.route('/get-car-info', methods=['POST'])
