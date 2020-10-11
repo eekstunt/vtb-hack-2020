@@ -12,6 +12,7 @@ from inference import MakeModelPredictor
 
 USE_PYHEIF = os.getenv('USE_PYHEIF', '') not in ('', '0')
 DUMP = os.getenv('DUMP', '') not in ('', '0')
+DUMP_DIR = 'dumps'
 if USE_PYHEIF:
     import pyheif
 
@@ -20,6 +21,21 @@ app = Flask(__name__)
 predictor = MakeModelPredictor('yolo-coco', 0.5, 0.3)
 with open('clf.pickle', 'rb') as f:
     MODELS, ALL_MODELS, clf = pickle.load(f)
+
+
+def get_next_image_number(dir):
+    return max(map(lambda p: int(p.split('.')[0]), os.listdir(dir)), default=0) + 1
+
+if DUMP:
+    os.makedirs(DUMP_DIR, exist_ok=True)
+    IMAGE_NUMBER = get_next_image_number(DUMP_DIR)
+
+
+def dump_image(data):
+    global IMAGE_NUMBER
+    with open(f'{DUMP_DIR}/{IMAGE_NUMBER}.jpg', 'wb') as f:
+        f.write(data)
+    IMAGE_NUMBER += 1
 
 
 @app.route('/classify', methods=['POST'])
@@ -74,9 +90,9 @@ def load_image(bs):
 
 
 def parse_image():
-    if DUMP:
-        with open('dump.txt', 'wb') as f:
-            f.write(request.get_data())
+    # if DUMP:
+    #     with open('dump.txt', 'wb') as f:
+    #         f.write(request.get_data())
     req = request.get_json(force=True, silent=True)
     if req is None:
         raise ValueError('Could not parse JSON')
@@ -89,6 +105,12 @@ def parse_image():
         bs = b64decode(req['content'])
     except ValueError:
         raise ValueError('Invalid base64')
+
+    if DUMP:
+        try:
+            dump_image(request.get_data())
+        except Exception:
+            pass
 
     try:
         # return np.asarray(Image.open(io.BytesIO(bs)))
